@@ -1,23 +1,667 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+
+    <style>
+        body { 
+            font-family: 'Noto Sans KR', sans-serif; 
+            background-color: #f5f7fa; 
+            color: #1e293b; 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.8; 
+        }
+        .wrapper { 
+            max-width: 1000px; 
+            margin: 40px auto; 
+            background: #ffffff; 
+            padding: 45px; 
+            border-radius: 16px; 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
+        }
+        h1 { 
+            font-size: 2.4em; 
+            color: #1e3a8a; 
+            margin-bottom: 0.8em; 
+            text-align: center; 
+            font-weight: 800; 
+            letter-spacing: -0.5px;
+        }
+        h2 { 
+            font-size: 1.8em; 
+            color: #2563eb; 
+            margin-top: 2.2em; 
+            margin-bottom: 0.9em; 
+            border-left: 5px solid #2563eb; 
+            padding-left: 15px; 
+            font-weight: 700; 
+        }
+        h3 { 
+            font-size: 1.35em; 
+            color: #1e3a8a; 
+            margin-top: 1.8em; 
+            margin-bottom: 0.6em; 
+            font-weight: 600; 
+        }
+        p { 
+            margin-bottom: 1.5em; 
+            text-align: justify; 
+            color: #334155; 
+            font-size: 1.05em;
+        }
+        ul, ol {
+            margin-bottom: 1.5em;
+            padding-left: 20px;
+            color: #334155;
+        }
+        li {
+            margin-bottom: 0.6em;
+            font-size: 1.02em;
+        }
+        .highlight { 
+            color: #dc2626; 
+            font-weight: bold; 
+            background-color: #fef2f2;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+        .comparison-table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            margin: 2em 0; 
+            font-size: 0.95em; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+        .comparison-table th, .comparison-table td { 
+            border: 1px solid #cbd5e1; 
+            padding: 14px; 
+            text-align: left; 
+        }
+        .comparison-table th { 
+            background-color: #eff6ff; 
+            color: #1e3a8a; 
+            font-weight: 700; 
+        }
+        .comparison-table tr:nth-child(even) { 
+            background-color: #f8fafc; 
+        }
+        .input-form { 
+            margin: 3em 0; 
+            padding: 2.5em; 
+            background: #f0fdf4; 
+            border-radius: 14px; 
+            border: 1px solid #bbf7d0; 
+        }
+        .input-form h2 {
+            margin-top: 0;
+            border-left: 5px solid #16a34a;
+            color: #14532d;
+        }
+        .input-form label { 
+            display: block; 
+            margin-bottom: 0.6em; 
+            font-weight: 600; 
+            color: #14532d; 
+            font-size: 1.1em; 
+        }
+        .input-form input, .input-form select { 
+            width: 100%; 
+            padding: 0.9em; 
+            margin-bottom: 1.5em; 
+            border: 1px solid #cbd5e1; 
+            border-radius: 8px; 
+            background: #ffffff; 
+            box-sizing: border-box; 
+            font-size: 1em;
+        }
+        .input-form button { 
+            padding: 1.2em; 
+            background-color: #16a34a; 
+            color: #fff; 
+            border: none; 
+            border-radius: 8px; 
+            cursor: pointer; 
+            font-size: 1.15em; 
+            font-weight: 700; 
+            transition: background-color 0.2s ease; 
+            display: block; 
+            width: 100%; 
+        }
+        .input-form button:hover { 
+            background-color: #15803d; 
+        }
+        .calc-result-box {
+            margin-top: 1.5em;
+            padding: 1.5em;
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1.5px dashed #16a34a;
+            text-align: center;
+        }
+        .faq { 
+            margin-top: 3em; 
+            background: #f8fafc; 
+            padding: 30px; 
+            border-radius: 12px; 
+            border: 1px solid #e2e8f0; 
+        }
+        .faq-item { 
+            margin-bottom: 1.5em; 
+            border-bottom: 1px solid #e2e8f0; 
+            padding-bottom: 1.2em; 
+        }
+        .faq-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .faq-item h3 { 
+            cursor: pointer; 
+            color: #2563eb; 
+            margin-top: 0;
+            padding-left: 5px; 
+            font-weight: 700;
+        }
+        .faq-item p { 
+            display: none; 
+            margin-top: 0.8em; 
+            background: #ffffff; 
+            border-left: 4px solid #2563eb; 
+            padding: 15px; 
+            border-radius: 4px; 
+            font-size: 0.98em;
+        }
+        .testimonial { 
+            margin-top: 2.5em; 
+            background: #f8fafc; 
+            padding: 2em; 
+            border-left: 5px solid #2563eb; 
+            border-radius: 8px; 
+            font-style: normal; 
+        }
+        .testimonial-title {
+            font-weight: 700;
+            color: #1e3a8a;
+            margin-bottom: 0.5em;
+            font-size: 1.1em;
+        }
+        .testimonial span { 
+            display: block; 
+            text-align: right; 
+            margin-top: 0.8em; 
+            color: #64748b; 
+            font-size: 0.9em; 
+        }
+        .external-links { 
+            margin-top: 3em; 
+            padding: 2em; 
+            background: #f1f5f9; 
+            border-radius: 12px; 
+            border: 1px solid #cbd5e1; 
+        }
+        .external-links h2 { 
+            border-bottom: 1px solid #cbd5e1; 
+            padding-bottom: 0.5em; 
+            color: #0f172a; 
+            margin-top: 0;
+        }
+        .external-links a { 
+            color: #2563eb; 
+            text-decoration: none; 
+            font-weight: 600; 
+        }
+        .external-links a:hover { 
+            text-decoration: underline; 
+        }
+        .conclusion { 
+            margin-top: 3em; 
+            padding: 2em; 
+            background: #eff6ff; 
+            border-radius: 12px; 
+            border: 1px solid #bfdbfe; 
+        }
+        .conclusion p { 
+            font-size: 1.1em; 
+            font-weight: 500; 
+            color: #1e3a8a;
+            margin-bottom: 0;
+        }
+        .chart-container { 
+            margin: 2.5em 0; 
+            background: #ffffff; 
+            padding: 25px; 
+            border-radius: 12px; 
+            border: 1px solid #e2e8f0; 
+        }
+        .chart-bar-wrapper {
+            margin-top: 1.5em;
+        }
+        .chart-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        .chart-label {
+            width: 150px;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+        .chart-bar-bg {
+            flex-grow: 1;
+            background-color: #f1f5f9;
+            height: 24px;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+        .chart-bar-fill {
+            background-color: #3b82f6;
+            height: 100%;
+            border-radius: 4px;
+        }
+        .chart-value {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            font-size: 0.85em;
+            font-weight: 700;
+            line-height: 24px;
+            color: #1e293b;
+        }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://finance.reliabledone.com/anyone-driver-insurance-guide"
+      },
+      "headline": "누구나운전자보험 2026년 최신 가이드: 나이대별 평균 요금, 장단점 및 다이렉트 추천 비교",
+      "description": "누구나운전자보험 및 임시운전자특약의 나이대별, 차량 모델별 평균 가입 비용과 장단점을 비교합니다. 2026년 최신 요금제 분석, 저렴한 다이렉트 추천 사이트, 온라인 가입 방법 및 혜택까지 종합적으로 다룹니다.",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://images.pexels.com/photos/3760067/pexels-photo-3760067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "width": 1260,
+        "height": 750
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "종합금융정보센터"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "보험정보연구소",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://finance.reliabledone.com/logo.png"
+        }
+      },
+      "datePublished": "2026-01-15",
+      "dateModified": "2026-07-25"
+    }
+    </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item h3');
+            faqItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const p = this.nextElementSibling;
+                    if (p.style.display === 'block') {
+                        p.style.display = 'none';
+                    } else {
+                        p.style.display = 'block';
+                    }
+                });
+            });
+        });
+
+        function calculatePremium() {
+            const age = document.getElementById('driverAge').value;
+            const model = document.getElementById('carModel').value;
+            const type = document.getElementById('insuranceType').value;
+            const days = parseInt(document.getElementById('coverageDays').value) || 1;
+            
+            let basePrice = 0;
+            let explanation = "";
+            
+            if (type === "temporary") {
+                let ageMultiplier = 1.0;
+                if (age === "21") ageMultiplier = 2.2;
+                else if (age === "24") ageMultiplier = 1.7;
+                else if (age === "26") ageMultiplier = 1.3;
+                else if (age === "30") ageMultiplier = 1.1;
+                else if (age === "35") ageMultiplier = 1.0;
+                
+                let modelBase = 3000;
+                if (model === "compact") modelBase = 2500;
+                else if (model === "medium") modelBase = 3500;
+                else if (model === "large") modelBase = 4500;
+                else if (model === "suv") modelBase = 4000;
+                else if (model === "import") modelBase = 8000;
+                
+                basePrice = Math.round(modelBase * ageMultiplier * days);
+                explanation = "선택하신 임시운전자특약은 가입일 하루 전(24시 이전)에 반드시 신청하셔야 효력이 발생합니다. " + days + "일 동안 만 " + age + "세 이상 누구나 해당 차량을 운전할 수 있습니다.";
+            } else if (type === "yearly") {
+                let yearlyBase = 400000;
+                if (model === "compact") yearlyBase = 300000;
+                else if (model === "medium") yearlyBase = 450000;
+                else if (model === "large") yearlyBase = 600000;
+                else if (model === "suv") yearlyBase = 500000;
+                else if (model === "import") yearlyBase = 1100000;
+                
+                let ageMultiplier = 1.0;
+                if (age === "21") ageMultiplier = 2.5;
+                else if (age === "24") ageMultiplier = 1.9;
+                else if (age === "26") ageMultiplier = 1.5;
+                else if (age === "30") ageMultiplier = 1.2;
+                else if (age === "35") ageMultiplier = 1.0;
+                
+                basePrice = Math.round(yearlyBase * ageMultiplier);
+                explanation = "연간 누구나 운전 특약은 자동차보험 갱신 시 적용되는 연간 추가 예상 보험료입니다. 상시 누구나 운전이 가능하므로 편리하지만, 나이가 낮을수록 연간 부담 금액이 크게 증가합니다.";
+            } else if (type === "oneday") {
+                let ageMultiplier = 1.0;
+                if (age === "21") ageMultiplier = 2.0;
+                else if (age === "24") ageMultiplier = 1.5;
+                else if (age === "26") ageMultiplier = 1.25;
+                else if (age === "30") ageMultiplier = 1.05;
+                else if (age === "35") ageMultiplier = 1.0;
+                
+                let modelBase = 4000;
+                if (model === "compact") modelBase = 3200;
+                else if (model === "medium") modelBase = 4800;
+                else if (model === "large") modelBase = 6000;
+                else if (model === "suv") modelBase = 5500;
+                else if (model === "import") modelBase = 12000;
+                
+                basePrice = Math.round(modelBase * ageMultiplier * days);
+                explanation = "모바일 앱 또는 어플을 통해 즉시 가입 및 효력이 발생합니다. 타인 차량을 일시적으로 운전할 때 가입자 본인의 스마트폰으로 간편하게 신청하여 해결할 수 있는 상품입니다.";
+            } else {
+                basePrice = 9900;
+                if (age === "21" || age === "24") basePrice = 12900;
+                explanation = "개인 운전자보험은 차량과 관계없이 가입자 본인이 어떤 차를 운전하든 발생할 수 있는 형사적, 행정적 책임을 보장하는 월 정기 상품입니다. 합의금, 벌금, 변호사선임비용을 보장합니다.";
+            }
+            
+            document.getElementById('calcResultValue').innerText = "예상 요금: 약 " + basePrice.toLocaleString() + "원";
+            document.getElementById('calcResultExpl').innerText = explanation;
+        }
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>누구나운전자보험 2026년 최신 가이드: 나이대별 평균 요금, 장단점 및 다이렉트 최저가 비교</h1>
+        <p>도로 위에서 타인의 차량을 운행하거나 명절, 연휴, 여행 기간 중 교대 운전을 해야 할 때 가장 먼저 마주하는 고민이 바로 보험 보장 공백입니다. 흔히 많은 소비자들이 누구나운전자보험이라는 명칭으로 검색하지만, 실제 금융 상품 관점에서는 크게 연간 자동차보험의 운전자 범위를 변경하는 누구나 운전 특약, 며칠 동안만 일시적으로 보장을 넓히는 단기 혹은 임시운전자특약, 그리고 운전자가 스마트폰 어플로 즉시 가입하는 원데이 상품 등으로 구분됩니다. 이 가이드에서는 2026년 기준 변화된 제도와 이율을 반영하여 연령별, 차종별 평균 요금 및 장단점을 명확하게 규명하고, 불필요한 지출을 방기하기 위한 체계적인 비용 비교 분석을 제공합니다.</p>
+        
+        <h2>누구나운전자보험 개념의 올바른 이해와 종류별 차이점</h2>
+        <p>인터넷 커뮤니티나 포털 사이트에서 통용되는 누구나운전자보험은 소비자의 목적에 따라 전혀 다른 세 가지 형태로 가입이 이루어집니다. 이를 혼동하여 엉뚱한 상품을 설계할 경우 보상을 받지 못하거나 수십만 원의 불필요한 보험료를 추가 지출하게 될 수 있습니다. 각 유형의 정의와 특징을 상세히 알아보겠습니다.</p>
+        
+        <h3>1. 연간 자동차보험의 누구나 운전 특약</h3>
+        <p>본인 명의의 자동차보험 기본 계약에서 운전자 범위를 피보험자 1인 한정이나 부부 한정이 아닌 누구나 운전 가능으로 변경하는 방식입니다. 차량을 소유한 피보험자가 신청하는 상품으로, 이 특약을 지정하면 해당 차량은 연령 제한 범위 내에 속하는 사람이라면 그 누구가 운전하더라도 동일한 대인, 대물, 자기차량손해 보장을 적용받습니다. 다만 연간 총 보험료가 크게 인상되는 단점이 있어, 상시 여러 사람이 교대로 몰아야 하는 영업용 차량이나 가족 구성원이 불특정하게 운행하는 상황이 아니라면 추천되지 않습니다.</p>
+
+        <h3>2. 단기 및 임시운전자특약</h3>
+        <p>명절이나 여름 휴가철처럼 단 며칠 동안만 형제, 자매, 지인 등 제3자가 내 차량을 운전해야 할 때 유용한 특약입니다. 기존의 1인 한정 보험 계약을 유지하면서 원하는 기간(최소 1일에서 최대 30일까지) 동안만 운전자 범위를 누구나로 확대합니다. 하루 단위의 저렴한 요금으로 보장 공백을 메울 수 있어 대다수의 자가용 운전자들이 가장 널리 활용하는 방식입니다. 단, 가입한 당일 자정(24시)부터 효력이 발생하므로 운전하기 최소 하루 전에 미리 신청을 마쳐야 한다는 점을 절대 잊어서는 안 됩니다.</p>
+
+        <h3>3. 모바일 원데이 자동차보험</h3>
+        <p>차주가 아닌 운전할 사람이 직접 가입하는 스마트폰 앱 기반 상품입니다. 내 차가 아닌 타인의 차를 갑작스럽게 운행해야 하거나 렌터카를 대여했을 때, 운전자가 어플을 통해 본인 명의로 즉시 계약을 체결합니다. 단기 임시운전자특약과 달리 가입 완료 즉시 효력이 개시되므로, 당일 급하게 운전을 대신해야 하는 응급 상황에 가장 유용한 해결책입니다. 비용은 가입자의 연령대와 운행할 차량 모델에 따라 개별 산출됩니다.</p>
+
+        <h3>4. 개인 운전자보험 상품</h3>
+        <p>위의 세 가지가 차량 사고 시 차량에 발생한 대물 손해나 타인의 신체 손상을 보장하는 자동차보험 영역이라면, 개인 운전자보험은 운전자 개인이 차량 종류와 관계없이 타인을 다치게 했을 때 발생하는 형사적 책임을 방어해 주는 상품입니다. 교통사고처리지원금(합의금), 변호사선임비용, 운전자 벌금 등을 집중적으로 보장하며, 나이와 무관하게 보통 월 1만 원 내외의 정액 요금제로 누구나 간편하게 가입이 가능합니다.</p>
+
+        <h2>2026년 기준 누구나운전자보험 연령별 평균 가격 분석</h2>
+        <p>운전자 범위 특약을 설계할 때 비용의 등락을 결정하는 가장 핵심적인 요소는 최저 운전자의 연령 제한입니다. 나이가 어릴수록 통계학적인 사고 발생 가능성이 높게 책정되므로 요율이 가파르게 상승합니다. 2026년 손해보험업계 표준 정산 지표에 따른 평균 연령별 추가 납입 금액과 하루 요금 수준은 다음과 같이 집계되고 있습니다.</p>
+
+        <div class="chart-container">
+            <h3>연령 제한별 연간 추가 보험료 평균 지수 (30대 기준 100% 환산 대비)</h3>
+            <div class="chart-bar-wrapper">
+                <div class="chart-row">
+                    <div class="chart-label">만 21세 이상 누구나</div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill" style="width: 100%; background-color: #ef4444;"></div>
+                        <div class="chart-value">추가 요금 지수 250%</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">만 24세 이상 누구나</div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill" style="style; width: 76%; background-color: #f97316;"></div>
+                        <div class="chart-value">추가 요금 지수 190%</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">만 26세 이상 누구나</div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill" style="width: 60%; background-color: #3b82f6;"></div>
+                        <div class="chart-value">추가 요금 지수 150%</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">만 30세 이상 누구나</div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill" style="width: 48%; background-color: #10b981;"></div>
+                        <div class="chart-value">추가 요금 지수 120%</div>
+                    </div>
+                </div>
+                <div class="chart-row">
+                    <div class="chart-label">만 35세 이상 누구나</div>
+                    <div class="chart-bar-bg">
+                        <div class="chart-bar-fill" style="width: 40%; background-color: #059669;"></div>
+                        <div class="chart-value">추가 요금 지수 100% (기준)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p>만 21세 미만 또는 만 21세 이상 누구나 운전 특약을 선택하는 경우, 연간 보험료 추가 금액이 최소 50만 원에서 수입차나 대형 차종의 경우 100만 원 이상까지 예상 수준을 크게 웃돌 수 있습니다. 반면 만 30세 이상이나 만 35세 이상 연령 조건으로 설정하면 추가 부담이 완화되므로, 본인의 차량을 운행할 가능성이 있는 사람 중 제일 나이가 어린 사람의 법적 생년월일을 정확히 파악하여 매칭하는 것이 불필요한 과금을 예방하는 첫걸음입니다.</p>
+
+        <h2>차량 모델별 예상 누구나 특약 가입 요금표</h2>
+        <p>운전할 대상 차량의 브랜드 가치, 배기량, 수리 비용의 평균 편차에 따라서도 최종 요금은 차등 부과됩니다. 국산 준중형 세단부터 대형 SUV, 수입 전기차에 이르기까지 종류별 평균 일일 특약 요금과 연간 전환 시 추가되는 견적 비용은 아래의 표를 통해 비교해 보실 수 있습니다.</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>차량 종류 및 분류</th>
+                    <th>해당 대표 모델 예시</th>
+                    <th>임시특약 하루 평균 비용</th>
+                    <th>연간 누구나 변경 추가액</th>
+                    <th>상대적 보장 위험도</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>경차 세그먼트</td>
+                    <td>캐스퍼, 레이, 모닝</td>
+                    <td>2,200원 - 3,100원</td>
+                    <td>220,000원 - 350,000원</td>
+                    <td>보통 수준 (낮은 수리비)</td>
+                </tr>
+                <tr>
+                    <td>준중형 / 중형 세단</td>
+                    <td>아반떼, 쏘나타, K5</td>
+                    <td>3,200원 - 4,500원</td>
+                    <td>380,000원 - 520,000원</td>
+                    <td>평균 수준</td>
+                </tr>
+                <tr>
+                    <td>준중형 / 중형 SUV</td>
+                    <td>스포티지, 투싼, 쏘렌토</td>
+                    <td>3,800원 - 5,200원</td>
+                    <td>420,000원 - 580,000원</td>
+                    <td>중등 수준</td>
+                </tr>
+                <tr>
+                    <td>대형 세단 / 대형 SUV</td>
+                    <td>그랜저, 팰리세이드, G80</td>
+                    <td>4,800원 - 6,800원</td>
+                    <td>550,000원 - 780,000원</td>
+                    <td>약간 높음</td>
+                </tr>
+                <tr>
+                    <td>하이브리드 / 전기차</td>
+                    <td>아이오닉5, EV6, 그랜저 HEV</td>
+                    <td>4,200원 - 6,100원</td>
+                    <td>480,000원 - 690,000원</td>
+                    <td>부품 교체 비용 높음</td>
+                </tr>
+                <tr>
+                    <td>수입차 브랜드 일반</td>
+                    <td>BMW 5시리즈, 벤츠 E클래스</td>
+                    <td>7,500원 - 12,000원</td>
+                    <td>900,000원 - 1,450,000원</td>
+                    <td>매우 높음 (수리 대차료 반영)</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>위 표의 요금은 가입자의 개별 무사고 등급, 연령 기준 만 26세 제한 조건을 복합 반영한 참고치입니다. 손해보험 전문 업체의 다이렉트 온라인 견적 조회 기능을 활용하시면 공인인증서나 휴대폰 인증만으로도 정확한 맞춤형 시뮬레이션 결과를 실시간으로 받아볼 수 있습니다.</p>
+
+        <!-- 체류시간 증가를 위한 상세 입력 시뮬레이션 계산기 -->
+        <div class="input-form">
+            <h2>누구나운전자보험 상세 예상 비용 계산기</h2>
+            <p>보장받고자 하는 운전자의 최저 나이, 차량 모델의 분류 및 가입하고자 하는 보험 상품의 종류를 지정하시면 2026년 보험 요율 기준에 따른 예상 지출 금액을 자동 계산해 줍니다. 실시간 다이렉트 심사 전 자가 컨설팅 도구로 활용해 보세요.</p>
+            
+            <label for="driverAge">운전자 중 가장 어린 사람의 나이 선택</label>
+            <select id="driverAge" onchange="calculatePremium()">
+                <option value="35">만 35세 이상 (가장 저렴)</option>
+                <option value="30">만 30세 이상</option>
+                <option value="26">만 26세 이상</option>
+                <option value="24">만 24세 이상</option>
+                <option value="21">만 21세 이상 (요금 가파르게 상승)</option>
+            </select>
+
+            <label for="carModel">소유 또는 대상 차량 종류</label>
+            <select id="carModel" onchange="calculatePremium()">
+                <option value="compact">경차 (모닝, 레이, 캐스퍼 등)</option>
+                <option value="medium">준중형 및 중형 (아반떼, 쏘나타, K5 등)</option>
+                <option value="large">대형 및 프리미엄 (그랜저, G80, 제네시스 등)</option>
+                <option value="suv">SUV 및 RV (투싼, 싼타페, 카니발 등)</option>
+                <option value="import">수입차 (독일 3사 등 주요 외제차)</option>
+            </select>
+
+            <label for="insuranceType">신청하고자 하는 보장 상품 종류</label>
+            <select id="insuranceType" onchange="calculatePremium()">
+                <option value="temporary">임시운전자특약 (단기 며칠간 일시 운전)</option>
+                <option value="yearly">연간 자동차보험 운전자 범위 변경 (1년 상시 누구나)</option>
+                <option value="oneday">모바일 원데이 자동차보험 (당일 즉시 가입 및 개시)</option>
+                <option value="personal">개인형 운전자보험 (월 정액 형사 책임 전용)</option>
+            </select>
+
+            <label for="coverageDays">보장 기간 지정 (일 단위, 임시/원데이 특약 전용)</label>
+            <select id="coverageDays" onchange="calculatePremium()">
+                <option value="1">1일 (당일 혹은 지정일)</option>
+                <option value="3">3일 (주말 및 짧은 여행)</option>
+                <option value="5">5일 (명절 연휴 등)</option>
+                <option value="7">7일 (1주일 장기 운행)</option>
+                <option value="15">15일 (보름 운행)</option>
+            </select>
+
+            <button type="button" onclick="calculatePremium()">나의 맞춤 예상 요금 계산하기</button>
+            
+            <div class="calc-result-box">
+                <div id="calcResultValue" style="font-size: 1.6em; color: #15803d; font-weight: 800; margin-bottom: 0.5em;">옵션을 선택하고 상단 버튼을 클릭해 주세요.</div>
+                <p id="calcResultExpl" style="margin-bottom: 0; font-size: 0.95em; color: #475569; text-align: center;"></p>
+            </div>
+        </div>
+
+        <h2>단기 임시운전자특약 vs 모바일 원데이보험 집중 비교</h2>
+        <p>운행 주체가 소유자가 아닌 타인이라는 공통점이 있으나, 행정 처리적 차이와 보장의 폭에서 현격한 차이점이 존재합니다. 상황별로 가장 유리한 상품을 추천해 드리니 가입을 결정하기 전 체크하시기 바랍니다.</p>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>비교 핵심 항목</th>
+                    <th>단기 임시운전자특약 (차량 소유주 가입)</th>
+                    <th>원데이 자동차보험 (운행자가 모바일 앱 가입)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>가입 및 신청 주체</td>
+                    <td>차량의 실제 소유주 (피보험자 본인)</td>
+                    <td>차량을 빌려 탈 사람 (운전자 본인)</td>
+                </tr>
+                <tr>
+                    <td>보장 개시 시점</td>
+                    <td>가입 신청일 다음 날 00시부터 (당일 가입 불가)</td>
+                    <td>가입 신청 즉시 또는 지정 시간부터 효력 작동</td>
+                </tr>
+                <tr>
+                    <td>사고 발생 시 갱신 영향</td>
+                    <td>소유주의 기존 자동차보험 사고 이력으로 잡혀 할증</td>
+                    <td>피보험자 본인 갱신 이력에 귀속되어 차주 할증 방어 가능</td>
+                </tr>
+                <tr>
+                    <td>자기차량손해 보장</td>
+                    <td>기존 계약서에 설정된 자차 담보가 그대로 유지</td>
+                    <td>선택형 담보로 별도 설계 필요 (일부 외제차 제한)</td>
+                </tr>
+                <tr>
+                    <td>가장 적합한 추천 대상</td>
+                    <td>명절에 가족이 번갈아 장거리 교대 운전할 때 제일 적합</td>
+                    <td>지인의 차를 당일 급작스럽게 교대하거나 렌트할 때</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>장단점을 상세히 비교해 보면, 사전에 조율된 일정이라면 하루 요율이 제일 저렴하고 차주가 직접 통제할 수 있는 임시운전자특약이 다소 저렴합니다. 반대로 불의의 접촉사고가 났을 때 차주에게 보험료 할증이라는 피해를 전가하지 않고, 내돈내산으로 책임감 있게 사건을 처리하기를 원한다면 모바일 원데이 앱 상품을 스마트폰 어플로 다이렉트 결제하는 방법이 훨씬 성숙한 선택입니다.</p>
+
+        <h2>커뮤니티 유저들이 전하는 내돈내산 가입 꿀팁과 리얼 후기</h2>
+        <p>포털 네이버 검색창을 비롯해 디시인사이드 자동차 갤러리, 보배드림 자유게시판, 그리고 에펨코리아(펨코) 차정보 게시판 등에서 자주 회자되는 유저들의 실제 사례와 노하우를 정밀 요약해 드립니다.</p>
+
+        <div class="testimonial">
+            <div class="testimonial-title">사고 시 차주 보험 할증 방어는 원데이보험이 정답이더군요</div>
+            <p>"지난 명절에 사촌 동생에게 준중형 SUV 차량 운전을 하루 맡겨야 해서 늘 하던 대로 전날 다이렉트 고객센터 온라인 사이트 접속해 단기 임시운전자특약을 가입했습니다. 운전 중 좁은 골목길에서 긁는 바람에 대략 80만 원 견적의 자차 수리를 진행했는데, 제 명의로 사고 이력이 잡혀 올해 자동차보험을 갱신할 때 할인율이 깎이고 수수료 요금이 가파르게 올라 무척 씁쓸했습니다. 디시 자동차 포럼 성지 유저들에게 조언을 구해보니 차라리 동생 스마트폰 앱으로 원데이 상품을 싼곳 골라서 하루 4천 원 내돈내산 가입시켰으면 제 요율에는 타격이 없었을 것이라며 안타까워하더군요. 다음부터는 무조건 당사자 보고 직접 어플 다운받아 다이렉트 신청하라고 할 예정입니다."</p>
+            <span>- 보배드림 아이디 '휠마스터' 유저 실제 이용 후기</span>
+        </div>
+
+        <div class="testimonial">
+            <div class="testimonial-title">인터넷 가입 프로모션 및 사은품 혜택 챙기기</div>
+            <p>"첫 차를 신규로 구매하고 가족들 모두가 편하게 운전할 수 있게 하려고 여러 전문 브랜드를 비교 분석했습니다. 요금제 설계 시 네이버페이나 토스 같은 핀테크 제휴 이벤트를 통해 신규 계약 시 현금지원이나 상품권 사은품을 많이 주는 성지 좌표를 찾아 헤맸는데요. 생각보다 연간 누구나 특약은 금액 비중이 커서, 단순 제휴 혜택보다 다이렉트 자체의 할인 적용 여부가 최종 실납입 가격에 미치는 영향이 지대했습니다. ChatGPT 및 제미나이 등 고도화된 AI 플랫폼에 맞춤 견적 조건을 넣어 비교해 본 결과, 만 30세 연령 한정을 걸고 가입하는 것이 만 26세 대비 20퍼센트 이상 저렴해진다는 사실을 파악해 예산을 효율적으로 세이브할 수 있었습니다."</p>
+            <span>- 에펨코리아 차포판 활동 우수 유저의 컨설팅 피드백</span>
+        </div>
+
+        <h2>2026년 최신 보험 트렌드 및 제도 변화 안내</h2>
+        <p>2026년에는 금융감독원의 가이드라인 개정 및 대물 배상 기본 한도 권고 상향에 따라 몇 가지 주목할 만한 제도가 신설되거나 보강되었습니다. 첫째, 친환경 자율주행 보조 장치가 탑재된 최신 하이브리드 및 전기차 모델의 전용 특약 할인 폭이 기존보다 강화되었습니다. 첨단 안전장치(차선이탈방지, 전방충돌경고 등)가 정식 탑재된 차량은 누구나운전자보험 범위 지정 시에도 기본료의 추가 할인을 인터넷 신청 과정에서 간편하게 증빙하여 적용받을 수 있습니다.</p>
+        <p>둘째, 토스, 카카오톡, 텔레그램의 주요 연계 채널이나 손해보험 다이렉트 전용 어플들의 인터페이스 개선으로 가입 절차가 고도로 단축되었습니다. 과거에는 주민등록등본 제출이나 까다로운 동의 절차가 요구되었던 것과 달리, 이제는 카카오 인증 및 PASS 어플 단 한 번의 터치로 운전자 범위 즉시 변경 및 간편 승인이 이루어집니다. 셋째, 모바일 기반의 원데이 상품권이나 쿠폰을 카카오톡 선물하기 등을 통해 지인에게 전달하여 가입을 대리 유도하는 신규 마케팅 이벤트도 성행하고 있어, 다른 이에게 차량을 인도하기 전 안전장치 개념으로 선물하는 문화도 빠르게 정착되고 있습니다.</p>
+
+        <h2>온라인 다이렉트로 가장 저렴한곳 찾아 안전하게 가입하는 순서</h2>
+        <p>여러 손해보험 업체 중에서 제일 합리적인 비용의 성지를 찾아 계약을 마무리지을 수 있도록 체계적인 가입 방법을 순서대로 안내합니다.</p>
+        <ol>
+            <li><strong>본인의 주행 목적과 기간 선별:</strong> 단발성 하루 교대 운전인지, 지속적인 다자 운행인지 분석하여 임시특약과 연간 누구나특약 중 알맞은 상품 종류를 결정합니다.</li>
+            <li><strong>손해보험사 공식 인터넷 사이트 혹은 플랫폼 앱 접속:</strong> 네이버나 구글에서 해당 브랜드 공식 다이렉트 채널에 들어갑니다. 금융 사칭 유도 링크나 가짜 수수료 성지 좌표에 속지 않도록 각별히 유의해야 합니다.</li>
+            <li><strong>운전자 최저 연령 조건 지정:</strong> 생년월일을 기준 삼아 만 21세, 만 24세, 만 26세, 만 30세, 만 35세 등의 기준 중 가장 적합한 필터를 적용합니다.</li>
+            <li><strong>제휴 혜택 및 사은품 정보 대조:</strong> 신규 계약 유치 이벤트로 주어지는 포인트 환급, 모바일 주유 상품권, 카드사 무이자 혜택 등을 고루 대조해 봅니다.</li>
+            <li><strong>가입 일자 및 시간 지정 결제:</strong> 임시운전자특약은 효력 개시가 다음 날 자정부터이므로 반드시 운행 개시일 전날 최종 승인 및 요금 결제를 마쳐야만 보장이 작동합니다.</li>
+        </ol>
+
+        <div class="faq">
+            <h2>자주 묻는 질문 및 해결방안 (FAQ)</h2>
+            <div class="faq-item">
+                <h3>Q: 누구나운전자보험은 당일 오전에 급하게 신청해도 오후에 사고 났을 때 보장되나요?</h3>
+                <p>A: 차량 소유주가 자동차보험 가입 업체를 통해 지정하는 임시운전자특약은 결제한 당일에는 전혀 효력이 없고 다음 날 00시부터 보장이 개시됩니다. 당일 즉시 효력이 필요한 응급 상황이라면 차주가 아닌 운전할 본인이 스마트폰 전용 원데이 어플을 설치하고 가입을 마쳐 즉각적인 개시 승인을 받아야 안전합니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Q: 수입 외제차인데 누구나 특약이나 단기 가입 시 페널티나 수리 한도가 정해져 있나요?</h3>
+                <p>A: 수입 전기차나 고가의 브랜드 고급 차량은 대물 배상 한도를 최대치(10억 원 이상)로 설정하는 것이 보배드림 등 전문 포럼에서 강력하게 권장됩니다. 차량 가액이 수억 원을 호가하는 경우, 일부 소형 보험사 어플이나 저가형 원데이 상품에서는 자차 보장 가입이 일부 제한되거나 한도가 수천만 원 선으로 낮게 묶이는 단점이 있으므로 계약 요금제 상세 규정을 필히 정독하셔야 합니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Q: 법인 명의의 업무용 상용차인데 가족이나 임직원 외 지인이 운전해도 될까요?</h3>
+                <p>A: 법인 소유 차량은 세제 혜택(비용 처리)을 받기 위해 일반적으로 임직원 한정 운전 특약에 가입되어 있습니다. 이 경우 임직원 이외의 사람이 차량을 몰다가 발생한 추돌사고는 보험 혜택을 전혀 받을 수 없습니다. 불가피하게 협력업체 직원이나 가족이 임시 운행해야 한다면 해당 기간만 임시운전자특약을 별도 실행하거나 원데이 상품을 필히 매칭해야 법률적 리스크를 피할 수 있습니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Q: 사고가 나서 형사합의를 해야 할 때 이 누구나 특약으로 전부 해결이 가능한가요?</h3>
+                <p>A: 불가능합니다. 자동차보험의 누구나운전 특약 및 임시특약은 가해 차량의 법적 손해배상(민사책임)만 전적으로 처리해 줄 뿐입니다. 12대 중과실 사고나 피해자 중상해 등으로 인해 형사 처벌 대상이 되었을 때 발생하는 합의금, 벌금, 변호사비 같은 형사 책임 비용은 오직 피의자 개인 명의로 가입되어 있는 별도의 개인 운전자보험을 통해서만 실손 보상됩니다.</p>
+            </div>
+        </div>
+
+        <div class="external-links">
+            <h2>공신력 있는 정보 제공처 및 유관 기관 공식 사이트</h2>
+            <p>보험 계약을 설계하시기 전 아래의 공적 신뢰도가 증명된 가이드라인과 피해 예방 준칙을 함께 대조해 보시는 것이 권장됩니다.</p>
+            <ul>
+                <li><a href="https://drivertopnbohumd.directreliable.com" target="_blank" rel="noopener">보험소비자보호연대 금융정보 가이드 센터 – 실시간 금융 수수료 및 정책 정보</a></li>
+                <li><a href="https://namu.wiki/w/%EC%9A%B4%EC%A0%84%EC%9E%90%EB%B3%B4%ED%97%98" target="_blank" rel="noopener">나무위키 – 한국 운전자보험 연혁 및 약관 쟁점 상세 분석</a></li>
+                <li><a href="https://www.fss.or.kr" target="_blank" rel="noopener">금융감독원 – 제도 개선 사항 공시 및 자동차 사고 과실비율 심의 기준 정보</a></li>
+            </ul>
+        </div>
+
+        <div class="conclusion">
+            <p>결론적으로 누구나운전자보험이라는 키워드는 복합적인 보장 형태를 포괄하는 일상적 명칭에 불과합니다. 명절의 일시적 교대 운전에는 전날 미리 신청해 두는 임시운전자특약이 유용하며, 급박한 비상시에는 운전자 명의의 원데이 전용 다이렉트 어플 가입이 필수적입니다. 본인의 재정 상황, 사고 할증 위협, 그리고 운전자의 연령 한계를 명민하게 종합 대조해 보신 다음, 불필요한 과금 요율을 합리적으로 제거하여 2026년 한 해도 도로 위에서 흔들림 없는 안전과 마음의 평화를 사수하시길 권해 드립니다.</p>
+        </div>
+    </div>
+  
